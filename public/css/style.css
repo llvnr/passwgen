@@ -12,7 +12,7 @@ html, body {
 }
 
 .ShellTop {
-    flex: 0.5;
+    flex: 1;
     background-color: var(--shell-top-background-color);
     color: var(--shell-top-color);
     display: flex;
@@ -141,3 +141,129 @@ html, body {
     padding-left: 1em;
     padding-bottom: 1em;
 }
+
+/* APP */
+
+.cadre__navigation {
+    min-height: 2em;
+    height: auto;
+    background-color: #e6e7ee;
+    color: black;
+    padding-top: 0.5em;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+}
+
+.cadre__service_logo {
+    padding-top: 1em;
+}
+
+.navigation__application {
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    margin:0;
+    list-style-type:none;
+}
+
+.navigation__application_element {
+    float: left;
+    margin-left: 10px;
+}
+
+.container__application-passwgen {
+    padding-top: 5em;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.ShellPassW__label-longueur {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: var(--shellpassw-labelongueur-color);
+}
+
+.ShellPassW__input-longueur {
+    width: 100%;
+    height: 2.5em;
+    border: 1px solid var(--shellpassw-input-longueur-border);
+    background-color: var(--shellpassw-input-longueur-background);
+    color: var(--shellpassw-input-longueur-color);
+}
+
+.ShellPassW__label-symbol {
+    color: var(--shellpassw-label-symbol-color);
+}
+
+.ShellPassW__label-number {
+    color: var(--shellpassw-label-number-color);
+}
+
+.ShellPassW__label-minuscule {
+    color: var(--shellpassw-label-minuscule-color);
+}
+
+.ShellPassW__label-majuscule {
+    color: var(--shellpassword-label-majuscule-color);
+}
+
+.ShellPassW__label-ambigu {
+    color: var(--shellpassw-label-ambigu-color);
+}
+
+.ShellPassW__option {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 33.33%);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ShellPassW__option-symbol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ShellPassW__option-number {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ShellPassW__option-minuscule {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ShellPassW__option-majuscule {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ShellPassW__option-ambigu {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; 
+}
+
+.ShellPassW__button-generate {
+    width: 25%;
+    height: 2.5em;
+    cursor: pointer;
+    background-color: #3D5A8D;
+    border: 1px solid #3D5A8D;
+    border-radius: 10px;
+    color: white;
+}
+
+.ShellPassW__output {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; 
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    border: 1px solid #04AA6D;
+    border-left: 9px solid #04AA6D;
+    background-color: #a3ffdd;
+    color: #04AA6D;
+}
+
+
+/* APP */

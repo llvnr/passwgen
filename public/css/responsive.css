@@ -16,4 +16,38 @@
         display: none;
     }
 
+    .container__application-passwgen {
+        padding-top: 1em;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+
+    .ShellPassW__option {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .ShellPassW__button-generate {
+        width: 100%;
+        height: 2.5em;
+        cursor: pointer;
+        background-color: #3D5A8D;
+        border: 1px solid #3D5A8D;
+        border-radius: 10px;
+        color: white;
+    }
+
+    .ShellPassW__output {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em; 
+        width: 90%;
+        padding: 1em;
+        text-align: center;
+        border: 1px solid #04AA6D;
+        border-left: 9px solid #04AA6D;
+        background-color: #a3ffdd;
+        color: #04AA6D;
+    }
+
 }

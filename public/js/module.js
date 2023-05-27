@@ -1,10 +1,10 @@
 export default {
-    logo: "../assets/logo-avadomain.png",
-    name: "Equativa",
-    alias: "equativa",
-    description: "Un service qui sert de boilerplate.",
-    footer: "COPYRIGHT 2023 - EQUATIVA",
+    logo: "../assets/logo-passwgen.png",
+    name: "Passwgen",
+    alias: "passwgen",
+    description: "Un service qui vous permet de générer un mot de passe.",
+    footer: "COPYRIGHT 2023 - PASSWGEN",
     keywords: [],
-    enabledAnalytics: false,
-    codeG4A: ''
+    enabledAnalytics: true,
+    codeG4A: 'G-Q5G7T2HNW1'
 }

@@ -9,4 +9,15 @@
     --shellauth-load-card-border-top: 1px solid #F1F0F9;
     --cadre-service-background-color: #1A1A1A;
     --cadre-service-color: white;
+    /* APP */
+    --shellpassw-labelongueur-color: white;
+    --shellpassw-input-longueur-border: black;
+    --shellpassw-input-longueur-background: #1A1A1A;
+    --shellpassw-input-longueur-color: white;
+    --shellpassw-label-symbol-color: white;
+    --shellpassw-label-number-color: white;
+    --shellpassw-label-minuscule-color: white;
+    --shellpassword-label-majuscule-color: white;
+    --shellpassw-label-ambigu-color: white;
+    /* APP */
 }

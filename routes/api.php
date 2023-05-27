@@ -3,6 +3,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,44 +16,67 @@ use App\Models\User;
 |
 */
 
-// Route::post('/uuid', function() {
+Route::group([
+    'prefix' => 'passwgen'
+], function ($router) {
 
-//     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-//     $data = $data ?? random_bytes(16);
-//     assert(strlen($data) == 16);
+    Route::post('/generator', function() {
 
-//     // Set version to 0100
-//     $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
-//     // Set bits 6-7 to 10
-//     $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+        $longueur = request('longueur');
+        $inclure_symboles = request('symboles');
+        $inclure_chiffres = request('chiffres');
+        $inclure_minuscules = request('minuscules');
+        $inclure_majuscules = request('majuscules');
+        $inclure_caracteres_ambigus = request('ambigu');
+        $clientIP = request()->ip();
 
-//     // Output the 36 character UUID.
-//     $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        if($longueur < 16 || $longueur > 50){
 
-//     $checkUser = User::where('uuid', $uuid)->exists();
+            return response()->json([
+                "status" => false,
+                "message" => "La longueur du mot de passe doit être compris entre 16 et 50 caractères."
+            ]);
 
-//     if($checkUser){
-//         return response()->json([
-//             "status" => false,
-//             "message" => "Une erreur est survenue, veuillez recommencer..."
-//         ]);
-//     } else {
-//         return response()->json([
-//             "status" => true,
-//             "uuid" => $uuid
-//         ]);
-//     }
+        } else {
 
-// });
+            $caracteres = '';
+            $mot_de_passe = '';
+            
+            // Ajouter les caractères possibles en fonction des paramètres
+            if ($inclure_symboles) {
+                $caracteres .= '@#$%';
+            }
+            if ($inclure_chiffres) {
+                $caracteres .= '0123456789';
+            }
+            if ($inclure_minuscules) {
+                $caracteres .= 'abcdefghijklmnopqrstuvwxyz';
+            }
+            if ($inclure_majuscules) {
+                $caracteres .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            }
+            if ($inclure_caracteres_ambigus) {
+                $caracteres .= '{}[]()/\'"~,;:.<>`';
+            }
+            
+            if(strlen($caracteres) == 0){
+                $caracteres .= 'abcdefghijklmnopqrstuvwxyz';
+            }
 
-// Route::group([
-//     'middleware' => 'api',
-//     'prefix' => 'auth'
-// ], function ($router) {
-//     Route::post('/login', [AuthController::class, 'login']);
-//     Route::post('/register', [AuthController::class, 'register']);
-//     Route::post('/logout', [AuthController::class, 'logout']);
-//     Route::post('/refresh', [AuthController::class, 'refresh']);
-//     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
-//     Route::post('/check', [AuthController::class, 'check']);
-// });
+            // Générer le mot de passe
+            for ($i = 0; $i < $longueur; $i++) {
+                $mot_de_passe .= $caracteres[mt_rand(0, strlen($caracteres)-1)];
+            }
+
+            Log::info("[PassWGen] - Le service a été solliciter pour générer un mot de passe d\'une longueur de '.$longueur.' caractères.");
+    
+            return response()->json([
+                "status" => true,
+                "password" => $mot_de_passe
+            ]);
+
+        }
+
+    });
+
+});
